@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 
+from app.forms import ProductForm
 from app.models import Product, Caracteristic
 
 
@@ -22,17 +23,17 @@ def product_detail(request, pk):
 
 
 def show_form(request):
-    return render(request, 'formulaire.html')
+    form = ProductForm()
+    return render(request, 'formulaire.html', {'form': form})
+
 
 def create_product(request):
-    name = request.POST['name']
-    code = request.POST['code']
-    price = request.POST['price']
-    description = request.POST['description']
-    Product.objects.create(
-        name=name,
-        code=code,
-        price=int(price),
-        description=description
-    )
+    form = ProductForm(request.POST or None)
+    if form.is_valid():
+        Product.objects.create(
+            name=form.cleaned_data['name'],
+            code=form.cleaned_data['code'],
+            price=form.cleaned_data['price'],
+            description=form.cleaned_data['description'],
+        )
     return redirect('/product')
