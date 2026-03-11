@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Nouveau Produit</h1>
+<form action="/product/enregister" method="post">
+    {% csrf_token %}
+    <div>
+        <label>Name</label>
+        <input name="name"/>
+    </div>
+    <div>
+        <label>Code</label>
+        <input name="code"/>
+    </div>
+    <div>
+        <label>Price</label>
+        <input name="price"/>
+    </div>
+    <div>
+        <label>Description</label>
+        <input name="description"/>
+    </div>
+    <button type="submit">Enregistrer</button>
+</form>
+</body>
+</html>

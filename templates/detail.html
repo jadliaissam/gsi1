@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Details Product</h1>
+<p> ID : {{ product.id }}</p>
+<p> Name : {{ product.name }}</p>
+<p> Description : {{ product.description }}</p>
+<p> Price : {{ product.price }}</p>
+
+<h3>Caracteristics</h3>
+<ul>
+    {% for c in characteristics %}
+        <li>{{ c.name }}: {{ c.value }}</li>
+        {% empty %}
+        <p>Aucune caracteristic trouvée</p>
+    {% endfor %}
+</ul>
+</body>
+</html>
