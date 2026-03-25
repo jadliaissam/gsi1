@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Boite de Reception</title>
+</head>
+<body>
+<h1>Boite de Réception</h1>
+{% for message in messages %}
+    <div>
+        <h3>{{ message.subject }}</h3>
+        <p>De: {{ message.email }}</p>
+        <p>{{ message.content }}</p>
+    </div>
+{% empty %}
+    <p>Aucun message trouvé.</p>
+{% endfor %}
+</body>
+</html>

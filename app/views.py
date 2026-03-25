@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
 from app.forms import ProductForm
-from app.models import Product, Caracteristic
+from app.models import Product, Caracteristic, Message
 
 
 def product_count(request):
@@ -20,6 +20,11 @@ def product_detail(request, pk):
         'product': product,
         'characteristics': characteristics
     })
+
+
+def list_messages(request):
+    messages = Message.objects.all()
+    return render(request, 'list_messages.html', {'messages': messages})
 
 
 def show_form(request):
