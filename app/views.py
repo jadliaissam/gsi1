@@ -27,9 +27,23 @@ def list_messages(request):
     return render(request, 'list_messages.html', {'messages': messages})
 
 
+def handle_form(request):
+    if request.method == 'GET':
+        return render(request, 'contact_htmlform.html')
+    else:
+        name = request.POST['name']
+        subject = request.POST['subject']
+        email = request.POST['email']
+        content = request.POST['content']
+
+        Message.objects.create(name=name, subject=subject, email=email, content=content)
+        return redirect('/messages')
+
+
 def show_form(request):
     form = ProductForm()
     return render(request, 'formulaire.html', {'form': form})
+
 
 
 def create_product(request):

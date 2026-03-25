@@ -4,6 +4,7 @@ from app import views
 urlpatterns = [
     #    path('admin/', admin.site.urls),
     #path('hello', views.hello),
+    path('form', views.handle_form),
     path('messages', views.list_messages),
     path('product', views.product_count),
     path('product/nouveau', views.show_form),
