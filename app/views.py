@@ -46,7 +46,17 @@ def handle_contact_form2(request):
         form = ContactForm()
         return render(request, 'form_djangoform.html', {'form': form})
     else:
-        pass
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            Message.objects.create(
+                name=form.cleaned_data['name'],
+                subject=form.cleaned_data['subject'],
+                email=form.cleaned_data['email'],
+                content=form.cleaned_data['content']
+            )
+            return redirect('/messages')
+        else:
+            return render(request, 'form_djangoform.html', {'form': form})
 
 
 def show_form(request):
