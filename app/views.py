@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from app.forms import ProductForm
+from app.forms import ProductForm, ContactForm
 from app.models import Product, Caracteristic, Message
 
 
@@ -39,6 +39,14 @@ def handle_contact_form(request):
 
     Message.objects.create(name=name, subject=subject, email=email, content=content)
     return redirect('/messages')
+
+
+def handle_contact_form2(request):
+    if request.method == 'GET':
+        form = ContactForm()
+        return render(request, 'form_djangoform.html', {'form': form})
+    else:
+        pass
 
 
 def show_form(request):
