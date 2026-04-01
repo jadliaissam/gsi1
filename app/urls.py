@@ -5,6 +5,7 @@ from app import views
 urlpatterns = [
     #    path('admin/', admin.site.urls),
     # path('hello', views.hello),
+    path('messages/<message_id>/edit', views.edit_message),
     path('form', views.show_contact_form),
     path('form2', views.handle_contact_form2),
     path('process_form', views.handle_contact_form),

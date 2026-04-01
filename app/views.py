@@ -1,3 +1,4 @@
+from django.forms.models import model_to_dict
 from django.shortcuts import render, redirect
 
 from app.forms import ProductForm, ContactForm
@@ -74,3 +75,12 @@ def create_product(request):
             description=form.cleaned_data['description'],
         )
     return redirect('/product')
+
+
+def edit_message(request, message_id):
+    message = Message.objects.get(id=message_id)
+    if request.method == 'GET':
+        form = ContactForm(initial=model_to_dict(message))
+        return render(request, 'form_djangoform.html', {'form': form})
+    else:
+        pass
